@@ -78,6 +78,38 @@
 
     
         <h2 class="title">
+            <a href="/2022/09/02/leetcode110/">
+                leetcode110
+            </a>
+        </h2>
+    
+    <time>
+        Sep 2, 2022
+    </time>
+    <section class="content">
+        <h1><span id="leetcode110balanced-binary-tree">Leetcode110.Balanced Binary Tree</span></h1><p> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/balanced-binary-tree/">leetcode link</a></p>
+<h2><span id="record-in-2022x2f9x2f2">record in 2022&#x2F;9&#x2F;2</span></h2><p>This problem can be divded into solving two pieces of question. The first is to calcute the height of each node. And after that we can implement the judge function on each node to test wether its two children node is balanced. This can cause <strong>a low efficent</strong> and <strong>time-consuming</strong> problem.</p>
+<p>When calcuting the height of each node, we use the <em><strong>bottom-up</strong></em> solution. When judging the balance, we have to use the <em><strong>top-down</strong></em> solution. In this case, when run the <strong>judge</strong> function from top to down while using the <strong>get_height</strong> function it will cause each node been visted multiple times(n here). And this will greatly increase our time complexity to O(n^2).</p>
+<p>We can use the  <em><strong>bottom-up</strong></em> solution only to handle this problem and reduce the time complexity to O(n). When calculate the height, we can also return each node’s balance statue. In other word, we can return a <strong>tuple</strong>. And each time we run the judge funtion on children node, we will get the height of the children nodes while using them to calculate the difference. And using logic <code>AND</code> combing two status to return the node’s status.</p>
+<h2><span id="code-edtion-2022x2f9x2f2">code edtion: 2022&#x2F;9&#x2F;2</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def get_height(self,root):</span><br><span class="line">    #not used in the current implement of code</span><br><span class="line">        if(root ==  None):</span><br><span class="line">            return True</span><br><span class="line">        else:</span><br><span class="line">            return max(self.get_height(root.left),self.get_height(root.right))+1</span><br><span class="line">    def judge(self,node):</span><br><span class="line">        if(node ==  None):</span><br><span class="line">            return (0,True)</span><br><span class="line">        lh,lb=self.judge(node.left)</span><br><span class="line">        rh,rb=self.judge(node.right)</span><br><span class="line">        if(abs(lh-rh)&gt;1):</span><br><span class="line">            return (max(lh,rh)+1,False)</span><br><span class="line">        else:</span><br><span class="line">            return (max(lh,rh)+1,lb and rb)</span><br><span class="line">        # abs(self.get_height(node.left)-self.get_height(node.right))</span><br><span class="line">        # if(abs(self.get_height(node.left)-self.get_height(node.right))&amp;lt=1):</span><br><span class="line">        #     return self.judge(node.left) and self.judge(node.right)</span><br><span class="line">        # else:</span><br><span class="line">        #     return False</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    def isBalanced(self, root: Optional[TreeNode]) -&gt; bool:</span><br><span class="line">        return self.judge(root)[-1]</span><br></pre></td></tr></table></figure>
+
+
+
+        
+
+        
+            <div class="tags">
+                <a class="tag-none-link" href="/tags/Binary-Tree/" rel="tag">Binary Tree</a><a class="tag-none-link" href="/tags/Depth-First-Search/" rel="tag">Depth-First Search</a>
+            </div>
+        
+
+    </section>
+</article>
+  
+    <article class="post ">
+
+    
+        <h2 class="title">
             <a href="/2022/09/02/leetcode108/">
                 Leetcode108
             </a>
