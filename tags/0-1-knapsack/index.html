@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Archives | Jelly&#39;s TechBlog</title>
+    <title>Tag: 0-1 knapsack | Jelly&#39;s TechBlog</title>
     <meta name="keywords" content="hexo,theme,otakism,otaku"/>
     <meta name="HandheldFriendly" content="True"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta property="og:type" content="website">
 <meta property="og:title" content="Jelly&#39;s TechBlog">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/tags/0-1-knapsack/index.html">
 <meta property="og:site_name" content="Jelly&#39;s TechBlog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Jelly Chan">
@@ -67,105 +67,54 @@
 
     <main id="main" role="main">
         
-    <article id="archive-page"
-             class="post article white-box">
-        <h2 class="title">
-            <a href="/archives">
-                Archives
-            </a>
-        </h2>
-        <section class="archive">
-            
-            <h3 class="archive-item archive-year">
-                <a id="archive-year-2022" href="/archives/2022/">
-                    2022
-                </a>
-            </h3>
-            
-            <div class="archive-item archive-post">
-                <a href="/2022/09/20/leetcode416/">
-                    <time>09-20</time>
-                    <span class="title">leetcode416</span>
-                </a>
-            </div>
-            
-            <div class="archive-item archive-post">
-                <a href="/2022/09/19/5-Dynamic-Programming-Pattern/">
-                    <time>09-19</time>
-                    <span class="title">5 Dynamic Programming Pattern</span>
-                </a>
-            </div>
-            
-            <div class="archive-item archive-post">
-                <a href="/2022/09/18/%E4%B8%AD%E5%9B%BD%E5%9B%BD%E4%BA%A7%E6%96%87%E8%89%BA%E4%BD%9C%E5%93%81%E6%94%B6%E8%97%8F/">
-                    <time>09-18</time>
-                    <span class="title">中国国产文艺作品收藏</span>
-                </a>
-            </div>
-            
-            <div class="archive-item archive-post">
-                <a href="/2022/09/18/Design-and-Development-Principles-SOLID/">
-                    <time>09-18</time>
-                    <span class="title">Design and Development Principles:SOLID</span>
-                </a>
-            </div>
-            
-            <div class="archive-item archive-post">
-                <a href="/2022/09/17/leetcode238/">
-                    <time>09-17</time>
-                    <span class="title">leetcode238</span>
-                </a>
-            </div>
-            
-            <div class="archive-item archive-post">
-                <a href="/2022/09/12/leetcode455/">
-                    <time>09-12</time>
-                    <span class="title">leetcode455</span>
-                </a>
-            </div>
-            
-            <div class="archive-item archive-post">
-                <a href="/2022/09/11/GDB-tool/">
-                    <time>09-11</time>
-                    <span class="title">GDB tool</span>
-                </a>
-            </div>
-            
-            <div class="archive-item archive-post">
-                <a href="/2022/09/11/leetcode496/">
-                    <time>09-11</time>
-                    <span class="title">leetcode496</span>
-                </a>
-            </div>
-            
-            <div class="archive-item archive-post">
-                <a href="/2022/09/08/leetcode337/">
-                    <time>09-08</time>
-                    <span class="title">leetcode337</span>
-                </a>
-            </div>
-            
-            <div class="archive-item archive-post">
-                <a href="/2022/09/07/backend-learning-graph/">
-                    <time>09-07</time>
-                    <span class="title">backend learning graph</span>
-                </a>
-            </div>
-            
-        </section>
-    </article>
+  <section class="page-header tag">
+    <h1>- <span>0-1 knapsack</span> -</h1>
+  </section>
+
+
+
+
+
+
+<section class="post-list">
+  
+    <article class="post ">
 
     
-        <nav id="page-nav" class="clearfix">
-            
-            
-                <a class="next" rel="next" href="/archives/page/2/">
-                    <span class="text">Next</span>
-                    <span class="icon icon-chevron-right"></span>
-                </a>
-            
-        </nav>
+        <h2 class="title">
+            <a href="/2022/09/20/leetcode416/">
+                leetcode416
+            </a>
+        </h2>
     
+    <time>
+        Sep 20, 2022
+    </time>
+    <section class="content">
+        <h1><span id="leetcode416partition-equal-subset-sum">Leetcode416.Partition Equal Subset Sum</span></h1><p> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-equal-subset-sum/">leetcode link</a></p>
+<h2><span id="record-in-2022x2f9x2f20">record in 2022&#x2F;9&#x2F;20</span></h2><p> This problem can be easily turn into a 0-1 knapsack problem where each item has equal weight and value. And our goal is to full filled the knapsack which has a capacity of (sum(nums)&#x2F;&#x2F;2). And get the total value equal to capacity.</p>
+<p> In 2d dp , we have to create a nxw array where n equal to length of <em>nums</em> and w equal to <em>target</em>. Then we initialize the array first column and first row to zero. After that we build the array in the order below.</p>
+<p>$$<br>  \begin{matrix}<br>   0 &amp; 0 &amp; 0 \<br>   0 &amp; -&gt; &amp; -&gt;\<br>   0 &amp; -&gt; &amp; -&gt;(*)&amp;<br>  \end{matrix} \tag{1}<br>$$</p>
+<p>Which can be code as:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,h):</span><br><span class="line">       for j in range(1,w):</span><br><span class="line">           if(self.bag[i-1]&gt;j):</span><br><span class="line">               dp[i][j]=dp[i-1][j]</span><br><span class="line">           else:</span><br><span class="line">               dp[i][j]=max(dp[i-1][j],dp[i-1][j-self.bag[i-1]]+self.bag[i-1])</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>However, it takes both O(n^2) time and space complexity for this 2d-dp solution. We can actually use only O(n) space. To learn more about it, check <a target="_blank" rel="noopener" href="https://labuladong.github.io/algo/3/25/73/">link</a>. To reach our goal, here we should change the order we build matrix to order below.</p>
+<p>$$<br>  \begin{matrix}<br>   0 &amp; 0 &amp; 0 \<br>   0 &amp; &lt;- &amp; &lt;- \<br>   0 &amp; &lt;- &amp; &lt;-(*)<br>  \end{matrix} \tag{2}<br>$$</p>
+<p>The reason we do that is to make sure the dp[j-self.bag[i-1]] stated at i-1 (instead of i) when we reach i.</p>
+<h2><span id="code-edtion-2022x2f9x2f20-1d-dp">code edtion: 2022&#x2F;9&#x2F;20 (1d-dp)</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def canPartition(self,nums):</span><br><span class="line">        target=sum(nums)//2</span><br><span class="line">        if(sum(nums)%2==1):</span><br><span class="line">            return False</span><br><span class="line">        w, h = target+1, len(nums)+1</span><br><span class="line">        dp=[0 for x in range(w)]</span><br><span class="line">        for i in range(1,h):</span><br><span class="line">            for j in range(target,-1,-1):</span><br><span class="line">                if(nums[i-1]&lt;=j):</span><br><span class="line">                    dp[j]=max(dp[j],dp[j-nums[i-1]]+nums[i-1])</span><br><span class="line">                if(i==h-1):</span><br><span class="line">                    return dp[-1]==target</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+        
+
+        
+            <div class="tags">
+                <a class="tag-none-link" href="/tags/0-1-knapsack/" rel="tag">0-1 knapsack</a><a class="tag-none-link" href="/tags/Dynamic-Programming/" rel="tag">Dynamic Programming</a>
+            </div>
+        
+
+    </section>
+</article>
+  
+</section>
 
 
         <script>setLoadingBarProgress(60);</script>

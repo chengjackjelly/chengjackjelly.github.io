@@ -78,6 +78,71 @@
 
     
         <h2 class="title">
+            <a href="/2022/09/20/leetcode416/">
+                leetcode416
+            </a>
+        </h2>
+    
+    <time>
+        Sep 20, 2022
+    </time>
+    <section class="content">
+        <h1><span id="leetcode416partition-equal-subset-sum">Leetcode416.Partition Equal Subset Sum</span></h1><p> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-equal-subset-sum/">leetcode link</a></p>
+<h2><span id="record-in-2022x2f9x2f20">record in 2022&#x2F;9&#x2F;20</span></h2><p> This problem can be easily turn into a 0-1 knapsack problem where each item has equal weight and value. And our goal is to full filled the knapsack which has a capacity of (sum(nums)&#x2F;&#x2F;2). And get the total value equal to capacity.</p>
+<p> In 2d dp , we have to create a nxw array where n equal to length of <em>nums</em> and w equal to <em>target</em>. Then we initialize the array first column and first row to zero. After that we build the array in the order below.</p>
+<p>$$<br>  \begin{matrix}<br>   0 &amp; 0 &amp; 0 \<br>   0 &amp; -&gt; &amp; -&gt;\<br>   0 &amp; -&gt; &amp; -&gt;(*)&amp;<br>  \end{matrix} \tag{1}<br>$$</p>
+<p>Which can be code as:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,h):</span><br><span class="line">       for j in range(1,w):</span><br><span class="line">           if(self.bag[i-1]&gt;j):</span><br><span class="line">               dp[i][j]=dp[i-1][j]</span><br><span class="line">           else:</span><br><span class="line">               dp[i][j]=max(dp[i-1][j],dp[i-1][j-self.bag[i-1]]+self.bag[i-1])</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>However, it takes both O(n^2) time and space complexity for this 2d-dp solution. We can actually use only O(n) space. To learn more about it, check <a target="_blank" rel="noopener" href="https://labuladong.github.io/algo/3/25/73/">link</a>. To reach our goal, here we should change the order we build matrix to order below.</p>
+<p>$$<br>  \begin{matrix}<br>   0 &amp; 0 &amp; 0 \<br>   0 &amp; &lt;- &amp; &lt;- \<br>   0 &amp; &lt;- &amp; &lt;-(*)<br>  \end{matrix} \tag{2}<br>$$</p>
+<p>The reason we do that is to make sure the dp[j-self.bag[i-1]] stated at i-1 (instead of i) when we reach i.</p>
+<h2><span id="code-edtion-2022x2f9x2f20-1d-dp">code edtion: 2022&#x2F;9&#x2F;20 (1d-dp)</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def canPartition(self,nums):</span><br><span class="line">        target=sum(nums)//2</span><br><span class="line">        if(sum(nums)%2==1):</span><br><span class="line">            return False</span><br><span class="line">        w, h = target+1, len(nums)+1</span><br><span class="line">        dp=[0 for x in range(w)]</span><br><span class="line">        for i in range(1,h):</span><br><span class="line">            for j in range(target,-1,-1):</span><br><span class="line">                if(nums[i-1]&lt;=j):</span><br><span class="line">                    dp[j]=max(dp[j],dp[j-nums[i-1]]+nums[i-1])</span><br><span class="line">                if(i==h-1):</span><br><span class="line">                    return dp[-1]==target</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+        
+
+        
+            <div class="tags">
+                <a class="tag-none-link" href="/tags/0-1-knapsack/" rel="tag">0-1 knapsack</a><a class="tag-none-link" href="/tags/Dynamic-Programming/" rel="tag">Dynamic Programming</a>
+            </div>
+        
+
+    </section>
+</article>
+  
+    <article class="post ">
+
+    
+        <h2 class="title">
+            <a href="/2022/09/19/5-Dynamic-Programming-Pattern/">
+                5 Dynamic Programming Pattern
+            </a>
+        </h2>
+    
+    <time>
+        Sep 19, 2022
+    </time>
+    <section class="content">
+        <ul>
+<li></li>
+</ul>
+
+
+        
+
+        
+            <div class="tags">
+                <a class="tag-none-link" href="/tags/Dynamic-Programming/" rel="tag">Dynamic Programming</a><a class="tag-none-link" href="/tags/algorithm/" rel="tag">algorithm</a>
+            </div>
+        
+
+    </section>
+</article>
+  
+    <article class="post ">
+
+    
+        <h2 class="title">
             <a href="/2022/09/18/%E4%B8%AD%E5%9B%BD%E5%9B%BD%E4%BA%A7%E6%96%87%E8%89%BA%E4%BD%9C%E5%93%81%E6%94%B6%E8%97%8F/">
                 中国国产文艺作品收藏
             </a>
@@ -408,74 +473,6 @@
         
             <div class="tags">
                 <a class="tag-none-link" href="/tags/backend/" rel="tag">backend</a><a class="tag-none-link" href="/tags/resource/" rel="tag">resource</a>
-            </div>
-        
-
-    </section>
-</article>
-  
-    <article class="post ">
-
-    
-        <h2 class="title">
-            <a href="/2022/09/05/leetcode543/">
-                leetcode543
-            </a>
-        </h2>
-    
-    <time>
-        Sep 5, 2022
-    </time>
-    <section class="content">
-        <h1><span id="leetcode543diameter-of-binary-tree">Leetcode543.Diameter of Binary Tree</span></h1><p> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/diameter-of-binary-tree/">leetcode link</a></p>
-<h2><span id="record-in-2022x2f9x2f5">record in 2022&#x2F;9&#x2F;5</span></h2><p> <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2603692/what-is-the-difference-between-tree-depth-and-height">difference bettween <strong>depth</strong> and <strong>height</strong></a></p>
-<ul>
-<li><p>The depth of a node is the number of edges from the node to the tree’s root node.<br>A root node will have a depth of 0.</p>
-</li>
-<li><p>The height of a node is the number of edges on the longest path from the node to a leaf.<br>A leaf node will have a height of 0.</p>
-</li>
-</ul>
-<p><strong>depth</strong> and <strong>height</strong> are the basic concept of tree. And <strong>diameter</strong> can actually transfer from the <strong>height</strong>. Given a binary tree. The <strong>diameter</strong> of root can be <em><strong>2+height(root.left)+height(root.right)</strong></em>. </p>
-<p>The edge cases can be quite tricky. <em><strong>When the recursion came to the null pointer, the return value can be set to -1</strong></em>. In this case when we encounter the leave node, we implement height+1(-1+1). And that is exactly what we wanted, we want the leave node to be zero.(also the leave diameter).</p>
-<h2><span id="code-edtion-2022x2f9x2f5">code edtion: 2022&#x2F;9&#x2F;5</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def dfs(self,root):</span><br><span class="line">        #return (diameter,height)</span><br><span class="line">        if not root:</span><br><span class="line">            return (-1,-1)</span><br><span class="line">        lh,ld=self.dfs(root.left)</span><br><span class="line">        rh,rd=self.dfs(root.right)</span><br><span class="line">        height=max(lh,rh)+1</span><br><span class="line">        diameter=lh+rh+2</span><br><span class="line">        if(diameter&gt;self.curmax):</span><br><span class="line">            self.curmax=diameter</span><br><span class="line">        return (height,diameter)</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -&gt; int:</span><br><span class="line">        self.curmax=0</span><br><span class="line">        self.dfs(root)</span><br><span class="line">        return self.curmax</span><br></pre></td></tr></table></figure>
-
-        
-
-        
-            <div class="tags">
-                <a class="tag-none-link" href="/tags/Binary-Tree/" rel="tag">Binary Tree</a><a class="tag-none-link" href="/tags/Depth-First-Search/" rel="tag">Depth-First Search</a>
-            </div>
-        
-
-    </section>
-</article>
-  
-    <article class="post ">
-
-    
-        <h2 class="title">
-            <a href="/2022/09/04/leetcode112-257/">
-                leetcode112/257
-            </a>
-        </h2>
-    
-    <time>
-        Sep 4, 2022
-    </time>
-    <section class="content">
-        <h1><span id="leetcode112x2f257path-sumx2fbinary-tree-paths">Leetcode112&#x2F;257.Path Sum&#x2F;Binary Tree Paths</span></h1><p>  <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/path-sum/">leetcode link 112</a></p>
-<p>  <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-paths/">leetcode link 257</a></p>
-<h2><span id="record-in-2022x2f9x2f4">record in 2022&#x2F;9&#x2F;4</span></h2><p>Both problems need to do the depth-first search to the binary tree. That’s the result I put them together. Actually it took me for a while to figure out how why my path sum solution don’t work. And it turns out that the variable I used to calculate sum <strong>can’t</strong> be a <strong>gobal variable</strong>. So we can use the function variable to make sure that before and after calling a recursion function, our “sum” stay the same inside the node.</p>
-<p>This kind of question follow a template.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def dfs(root):</span><br><span class="line">    if(not root):</span><br><span class="line">        return </span><br><span class="line">    if( not root.left and  not root.right):</span><br><span class="line">        #do something</span><br><span class="line">    dfs(root.left)</span><br><span class="line">    dfs(root.right)</span><br></pre></td></tr></table></figure>
-
-
-
-        
-
-        
-            <div class="tags">
-                <a class="tag-none-link" href="/tags/Binary-Tree/" rel="tag">Binary Tree</a><a class="tag-none-link" href="/tags/Depth-First-Search/" rel="tag">Depth-First Search</a>
             </div>
         
 
