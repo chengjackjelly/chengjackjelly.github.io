@@ -82,6 +82,42 @@
 
     
         <h2 class="title">
+            <a href="/2022/09/22/leetcode518/">
+                leetcode518
+            </a>
+        </h2>
+    
+    <time>
+        Sep 22, 2022
+    </time>
+    <section class="content">
+        <h1><span id="leetcode518partition-equal-subset-sum">Leetcode518.Partition Equal Subset Sum</span></h1><p> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/coin-change-2/">leetcode link</a></p>
+<p> This problem is a typical unbounded knapsack problem where we can choose to select the same coin more than one time. We also need to build up a HXW matrix where H equal to the coin’s number(type) and W equal to the target(from zero to final goal).</p>
+<p> inside the matrix, dp[i][j] means when we can only select the first i coin(repeatly), how much way can we full fill the bag with capacity eqaull to j.</p>
+<p> The State transfer function can be write as:</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,h):</span><br><span class="line">           for j in range(1,w):</span><br><span class="line">               if(j&gt;=coins[i-1]):</span><br><span class="line">                   dp[i][j]+=dp[i][j-coins[i-1]] (*)</span><br><span class="line">               dp[i][j]+=dp[i-1][j]</span><br></pre></td></tr></table></figure>
+<p> Noted that here when we calculate <em>dp[i][j]</em>, we read state from <em>d[i][j-coins[i-1]]</em>, this means we can select <em>ith coin</em> many times. (unbounded)</p>
+<p>However, if we turn this problem into a 0-1 knapsack problem. We only have to change one line(*) of code.</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i in range(1,h):</span><br><span class="line">           for j in range(1,w):</span><br><span class="line">               if(j&gt;=coins[i-1]):</span><br><span class="line">                   dp[i][j]+=dp[i-1][j-coins[i-1]] (*)</span><br><span class="line">               dp[i][j]+=dp[i-1][j]</span><br></pre></td></tr></table></figure>
+
+<p> In state <em>dp[i][j-coins[i-1]]</em> we have already choose <em>ith coin</em>, so it’s impossible for us to choose it a second time when we process the <em>d[i][j]</em>. That’s the main reason we read from <em>dp[i-1][j-coins[i-1]]</em> instead of <em>dp[i][j-coins[i-1]]</em>.</p>
+
+
+        
+
+        
+            <div class="tags">
+                <a class="tag-none-link" href="/tags/0-1-knapsack/" rel="tag">0-1 knapsack</a><a class="tag-none-link" href="/tags/Dynamic-Programming/" rel="tag">Dynamic Programming</a><a class="tag-none-link" href="/tags/unbounded-knapsack/" rel="tag">unbounded knapsack</a>
+            </div>
+        
+
+    </section>
+</article>
+  
+    <article class="post ">
+
+    
+        <h2 class="title">
             <a href="/2022/09/20/leetcode416/">
                 leetcode416
             </a>
