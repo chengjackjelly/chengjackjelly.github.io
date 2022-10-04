@@ -78,6 +78,51 @@
 
     
         <h2 class="title">
+            <a href="/2022/10/04/dailylog10-4/">
+                dailylog10.4
+            </a>
+        </h2>
+    
+    <time>
+        Oct 4, 2022
+    </time>
+    <section class="content">
+        <p>国庆去了德清呆了三天，最后一天深刻反省了自己的意志力之差。<br>开始看《强风吹拂》了，打算边看边坚持跑步。之前的刷题从9.30生病之后到国庆放假都被断掉了，深感健康才是保持行动力的第一要素。</p>
+<p>今天把极乐迪斯科的第一天过完了，为了防止下次不记得，记录下和老金的每日总结：</p>
+<ul>
+<li><p>提到了两个关键人物还需要继续互动 一个是那个工会头子的大胖子（只去过一次，第一次去被打击了好几点精神和健康） 第二个是那个有钱的女人，好像是第三方的商业组织的。</p>
+</li>
+<li><p>跟老金的总结实在太暧昧了，好想进修一个地下同性恋思想和他谈恋爱…</p>
+</li>
+</ul>
+<p>老金：不过我想说….今天真是累坏了。这么到处<em>跑来跑去</em>是要做什么？你跑了很久。这是41分局的标准训练吗？</p>
+<p>（笑死了我，我也想知道为什么这游戏时间过这么慢</p>
+<p>大胡子：我在训练长跑。我想为慈善事业筹集资金。</p>
+<p>金：好吧。不过 不好意思，恕我冒昧，如果你有鞋的话，为什么不穿上呢？</p>
+<p>（对啊为什么</p>
+<p>大胡子：这是我救赎的一部分。</p>
+<p>金：请随意。</p>
+<p>….</p>
+<p>你怎么这么酷，金</p>
+<p>这个不酷，是对意志的一种不必要的考验。</p>
+<p>把习惯控制在自己设定的范围内需要很强的自控力。（大胡子思考成功了 &#x2F;(ㄒoㄒ)&#x2F;~~</p>
+
+
+        
+
+        
+            <div class="tags">
+                <a class="tag-none-link" href="/tags/daily/" rel="tag">daily</a><a class="tag-none-link" href="/tags/life/" rel="tag">life</a>
+            </div>
+        
+
+    </section>
+</article>
+  
+    <article class="post ">
+
+    
+        <h2 class="title">
             <a href="/2022/09/22/leetcode518/">
                 leetcode518
             </a>
@@ -447,37 +492,6 @@
         
             <div class="tags">
                 <a class="tag-none-link" href="/tags/Hash-Table/" rel="tag">Hash Table</a><a class="tag-none-link" href="/tags/Monotonic-Stack/" rel="tag">Monotonic Stack</a><a class="tag-none-link" href="/tags/Stack/" rel="tag">Stack</a>
-            </div>
-        
-
-    </section>
-</article>
-  
-    <article class="post ">
-
-    
-        <h2 class="title">
-            <a href="/2022/09/08/leetcode337/">
-                leetcode337
-            </a>
-        </h2>
-    
-    <time>
-        Sep 8, 2022
-    </time>
-    <section class="content">
-        <h1><span id="leetcode337house-robber-iii">Leetcode337.House Robber III</span></h1><p> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/house-robber-iii/">leetcode link</a></p>
-<h2><span id="record-in-2022x2f9x2f8">record in 2022&#x2F;9&#x2F;8</span></h2><p>This problem is a combination of <strong>DFS</strong> and <strong>dynamic programming</strong>. The key to solving the problem is to realize that <em><strong>given a root</strong></em>, the maximum value we can get is by deciding to choose or not to choose it. If not to choose, then the current maximum would be the sum of both its child node’s choosing value. If to choose, that means we can still <em><strong>decide</strong></em> whether to choose based on the comparison. We finish the dynamic process by searching the tree from the bottom to the top.</p>
-<p>The code is quite simple and straghtforward but the idea is hard to come up with in the first time.</p>
-<h2><span id="code-edtion-2022x2f9x2f8">code edtion: 2022&#x2F;9&#x2F;8</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def dfs(self,root):</span><br><span class="line">        if not root:</span><br><span class="line">            return (0,0)</span><br><span class="line">        lw,ln=self.dfs(root.left)</span><br><span class="line">        rw,rn=self.dfs(root.right)</span><br><span class="line">        w=max(ln+rn+root.val,lw+rw)</span><br><span class="line">        n=lw+rw</span><br><span class="line">        return (w,n)</span><br><span class="line">    def rob(self, root: Optional[TreeNode]) -&gt; int:</span><br><span class="line">        w,n=self.dfs(root)</span><br><span class="line">        return max(w,n)</span><br></pre></td></tr></table></figure>
-<p>P.S. I have been working on binary tree problem for a week. Today I can solve two middle binary tree problem without searching for solution. <em>Huge progress !</em> Actually, there are still 1 middle problem in the top100 to be done. I will finish it all tommorow and also start a new section of topic. Maybe Stack?</p>
-
-
-        
-
-        
-            <div class="tags">
-                <a class="tag-none-link" href="/tags/Binary-Tree/" rel="tag">Binary Tree</a><a class="tag-none-link" href="/tags/Depth-First-Search/" rel="tag">Depth-First Search</a>
             </div>
         
 

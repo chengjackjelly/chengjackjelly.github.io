@@ -83,6 +83,37 @@
 
     
         <h2 class="title">
+            <a href="/2022/09/08/leetcode337/">
+                leetcode337
+            </a>
+        </h2>
+    
+    <time>
+        Sep 8, 2022
+    </time>
+    <section class="content">
+        <h1><span id="leetcode337house-robber-iii">Leetcode337.House Robber III</span></h1><p> <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/house-robber-iii/">leetcode link</a></p>
+<h2><span id="record-in-2022x2f9x2f8">record in 2022&#x2F;9&#x2F;8</span></h2><p>This problem is a combination of <strong>DFS</strong> and <strong>dynamic programming</strong>. The key to solving the problem is to realize that <em><strong>given a root</strong></em>, the maximum value we can get is by deciding to choose or not to choose it. If not to choose, then the current maximum would be the sum of both its child node’s choosing value. If to choose, that means we can still <em><strong>decide</strong></em> whether to choose based on the comparison. We finish the dynamic process by searching the tree from the bottom to the top.</p>
+<p>The code is quite simple and straghtforward but the idea is hard to come up with in the first time.</p>
+<h2><span id="code-edtion-2022x2f9x2f8">code edtion: 2022&#x2F;9&#x2F;8</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def dfs(self,root):</span><br><span class="line">        if not root:</span><br><span class="line">            return (0,0)</span><br><span class="line">        lw,ln=self.dfs(root.left)</span><br><span class="line">        rw,rn=self.dfs(root.right)</span><br><span class="line">        w=max(ln+rn+root.val,lw+rw)</span><br><span class="line">        n=lw+rw</span><br><span class="line">        return (w,n)</span><br><span class="line">    def rob(self, root: Optional[TreeNode]) -&gt; int:</span><br><span class="line">        w,n=self.dfs(root)</span><br><span class="line">        return max(w,n)</span><br></pre></td></tr></table></figure>
+<p>P.S. I have been working on binary tree problem for a week. Today I can solve two middle binary tree problem without searching for solution. <em>Huge progress !</em> Actually, there are still 1 middle problem in the top100 to be done. I will finish it all tommorow and also start a new section of topic. Maybe Stack?</p>
+
+
+        
+
+        
+            <div class="tags">
+                <a class="tag-none-link" href="/tags/Binary-Tree/" rel="tag">Binary Tree</a><a class="tag-none-link" href="/tags/Depth-First-Search/" rel="tag">Depth-First Search</a>
+            </div>
+        
+
+    </section>
+</article>
+  
+    <article class="post ">
+
+    
+        <h2 class="title">
             <a href="/2022/09/07/backend-learning-graph/">
                 backend learning graph
             </a>
