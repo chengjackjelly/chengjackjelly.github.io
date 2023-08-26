@@ -1,0 +1,11 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to give writing advise
+    steps:
+      - name: proselint action
+        id: proselint
+        uses: actions/proselint-docker-action@v2
+
