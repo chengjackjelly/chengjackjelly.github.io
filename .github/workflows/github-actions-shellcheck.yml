@@ -11,8 +11,9 @@ jobs:
     name: Shellcheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Run ShellCheck
-        uses: ludeeus/action-shellcheck@master
-	with:
-	    scandir: './scripts'
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Set up shellcheck
+        run: sudo apt-get install shellcheck
+      - name: Run shellcheck
+        run: shellcheck ./scripts/*.sh
