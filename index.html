@@ -1,1 +1,46 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiajun Chen Blog</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+
+
+    <!-- 目录 -->
+    <nav id="directory" style="display: block;">
+        <ul>
+            <li><a href="#" onclick="loadMarkdown('js/fetchData.md')">how to fetch data in js(low level
+                    implementation)</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- 展示Markdown内容的容器 -->
+    <div id="markdown-container"></div>
+
+    <!-- JavaScript脚本 -->
+    <script>
+        function loadMarkdown(filename) {
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('markdown-container').innerHTML =
+                        marked.parse(xhr.responseText);
+                    document.getElementById('directory').style.display = 'none';
+
+                }
+            };
+            xhr.open('GET', filename, true);
+            xhr.send();
+        }
+
+    </script>
+</body>
+
+</html>
