@@ -10,36 +10,39 @@
 
 <body>
 
-
-    <!-- 目录 -->
-    <nav id="directory" style="display: block;">
+    <nav>
         <ul>
-            <li><a href="#" onclick="loadMarkdown('js/fetchData.md')">how to fetch data in js(low level
+            <li><a href="#" onclick="loadPage('js/fetchData.md')">how to fetch data in js(low level
                     implementation)</a></li>
         </ul>
     </nav>
 
+    <main id="content">
+        <!-- Content will be loaded here -->
+    </main>
 
-    <!-- 展示Markdown内容的容器 -->
-    <div id="markdown-container"></div>
-
-    <!-- JavaScript脚本 -->
     <script>
-        function loadMarkdown(filename) {
 
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById('markdown-container').innerHTML =
-                        marked.parse(xhr.responseText);
-                    document.getElementById('directory').style.display = 'none';
+        function loadPage(page) {
+            const contentElement = document.getElementById('content');
 
-                }
-            };
-            xhr.open('GET', filename, true);
-            xhr.send();
+            // You can fetch the content dynamically from a server here
+            // For simplicity, static content is used in this example
+            switch (page) {
+
+                default:
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            contentElement.innerHTML =
+                                marked.parse(xhr.responseText);
+                        }
+                    };
+                    xhr.open('GET', page, true);
+                    xhr.send();
+
+            }
         }
-
     </script>
 </body>
 
