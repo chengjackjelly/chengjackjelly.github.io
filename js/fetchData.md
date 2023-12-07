@@ -94,6 +94,16 @@ An event handler is a particular type of callback. A callback is just a function
 
 The Promise is a [standard built-in object](#standard-built-in-objects) which category belong to [control abstraction objects](#control-abstraction-objects).
 
+The asynchronous method returns a promise to supply the value at some point in the future.
+
+
+A Promise is in one of these states:
+
+pending: initial state, neither fulfilled nor rejected.
+fulfilled: meaning that the operation was completed successfully.
+rejected: meaning that the operation failed.
+
+The eventual state of a pending promise can either be fulfilled with a value or rejected with a reason (error). When either of these options occur, the associated handlers queued up by a promise's *then* method are called. If the promise has already been fulfilled or rejected when a corresponding handler is attached, the handler will be called, so there is no race condition between an asynchronous operation completing and its handlers being attached.
 
 
 
