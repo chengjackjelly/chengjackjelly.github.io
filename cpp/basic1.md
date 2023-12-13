@@ -64,11 +64,14 @@ The 10th line of the code above call the copy constructor(which needs to allocat
 
 We can modify the second steps here. Instead of _copy_, we can use _move_ here where we pass rvalue reference as function parameter. _Move_ will occur aotomatically whenever we are trying to copy an rvalue.
 
+![Picture of Value categories](./picture/category.png)
+
+Here, rvalue identity can become a xvalue by binded to a rvalue reference.
 
 
 
 
 
 
-####relative material
+#### relative material
 - slide in tddd38:Fundamentals III 
