@@ -16,8 +16,20 @@ It turns out very obviously that the latter is correct. But I still go for the f
 
 And the reason the first one is a big mistake is due to:
 
-- By all means, we can only get the *copy* of the iterator from the container. However, method likes `filter` in `range` require us to modify the `range`. This means `iterator begin(){
+- By all means, we can only get the *copy* of the iterator from the container. However, method likes `filter` in `range` require us to modify the `range` by modifying the iterator of it. This can not be achieved since `iterator begin(){
         return data.begin();
-    }` which we expose to the user, can not change the current `range` we are woring on.
+    }` which we expose to the user, can not change the current `range` we are working on.
 - But if we use the latter way, which we only store the *copy* of iterator at the very beginning. And return the reference to our iterator inside the range, we are allowed to change the begin and end for the `range`.
 - Noted that the iterator of both range and original container point to the same place (the container). However, the *address* of iterator is difference( they are different object in memory).
+
+##### other detail:
+###### std::distance
+Noted that some containers like list, forwarding_list, do not have the size() method. The reason can be found [here](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2543.htm). But we can use std::distance(start,end) to solve this problem.(Noted that it causes O(N) for list and forwarding_list).
+
+###### std::advance
+Some iterator are not allowed to perform `++` operator. This is a method return void and perform the operation to the iterator inplace.
+```
+//example std::advance
+auto l=data.begin();
+std::advance(l,n);
+```
