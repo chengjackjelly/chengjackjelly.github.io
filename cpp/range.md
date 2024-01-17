@@ -16,7 +16,7 @@ It turns out very obviously that the latter is correct. But I still go for the f
 
 And the reason the first one is a big mistake is due to:
 
-- By all means, we can only get the *copy* of the iterator from the container. However, method likes `filter` in `range` require us to modify the `range` by modifying the iterator of it. This can not be achieved since `iterator begin(){
+- By all means, we can only get the *copy* of the iterator from the container.(*Update 12/21: We can not get the non const reference of the iterator from container which means we can still get the const reference of the iterator from container*) However, method likes `filter` in `range` require us to modify the `range` by modifying the iterator of it. This can not be achieved since `iterator begin(){
         return data.begin();
     }` which we expose to the user, can not change the current `range` we are working on.
 - But if we use the latter way, which we only store the *copy* of iterator at the very beginning. And return the reference to our iterator inside the range, we are allowed to change the begin and end for the `range`.
