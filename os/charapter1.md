@@ -1,1 +1,0 @@
-On Linux, the first system program is “systemd,” and it starts many other daemons
