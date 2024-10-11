@@ -12,7 +12,7 @@ html_folder_path.mkdir(exist_ok=True)
 # Function to convert a markdown file to HTML using pandoc
 def convert_markdown_to_html(markdown_file):
     output_file = html_folder_path / (markdown_file.stem + '.html')
-    command = f"pandoc -s {markdown_file} -o {output_file}"
+    command = f"pandoc -f markdown+lists_without_preceding_blankline -s {markdown_file} -o {output_file}"
     try:
         print(f"Converting {markdown_file} to {output_file}...")
         subprocess.run(command, shell=True, check=True)
