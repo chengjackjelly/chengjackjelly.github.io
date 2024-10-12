@@ -247,7 +247,40 @@ to understand our current situation.</p>
 <li>Data processing</li>
 <li>Data visualization</li>
 <li>Data transmission</li>
-<li>Data application</li>
+<li>Data application ### Topic: data warehouse #### 5. snowflake the
+original paper</li>
 </ul>
+<p>The main difference of snowflake to other traditional data warehouse
+technology is it is design for the benefit for <strong>cloud</strong>.
+It’s processing engine and most of other part are developed from scratch
+instead of using existing big data technology like hadoop.</p>
+<h5 id="snowflake-vs-shared-nothing-architectures">snowflake vs
+shared-nothing architectures</h5>
+<ul>
+<li><p>Heterogeneous Workload</p>
+<p>In share-nothing architectures, multiple nodes usually have same
+hardware configuration. There could be two different type of tasks(one
+is I/O intensive the other is CPU intensive) This need the hardware to
+be configured in a trade-off with low average utilization. Platform like
+Amazon EC2 allow different instance type from which this share-nothing
+architectures cannot take advantage.</p></li>
+<li><p>Membership changes</p>
+<p>In the cloud concept, the node failures are more frequent and
+performance can vary even in the same type of nodes(EC2 instances). This
+could be a result of non-virtualized resources like network bandwidth.
+When it happens, data need to be reshuffled between nodes which will
+impact the system performance.</p></li>
+</ul>
+<p>Snowflake solution: separates storage and compute. Storage in Amazon
+S3(blob store). Compute in snowflake shared-nothing engine.</p>
+<p><strong>How SF shored data in S3</strong></p>
+<p>❌ S3: No possible to append data the end of file instead of fully
+overwritten.</p>
+<p>💡 Snowflake: Tables are horizontally partitioned into immutable
+files.</p>
+<p>✅ S3: Support GET requests for parts of a file.</p>
+<p>💡 Snowflake: Within each file, the values of same column or
+attribute are grouped together and heavily compressed. Each table file
+has a header contain the offsets of each column within the file.</p>
 </body>
 </html>

@@ -54,3 +54,34 @@ The lifecycle included:
 - Data visualization
 - Data transmission
 - Data application
+### Topic: data warehouse
+#### 5. snowflake the original paper
+
+The main difference of snowflake to other traditional
+data warehouse technology is it is design for the benefit for __cloud__.
+It's processing engine and most of other part are developed from scratch instead of using existing big data technology like hadoop.
+
+#####  snowflake vs shared-nothing architectures
+
+- Heterogeneous Workload
+
+    In share-nothing architectures, multiple nodes usually have same hardware configuration. There could be two different type of tasks(one is I/O intensive the other is CPU intensive)
+    This need the hardware to be configured in a trade-off with low average utilization.
+    Platform like Amazon EC2 allow different instance type from which this share-nothing architectures cannot take advantage.
+
+- Membership changes
+
+    In the cloud concept, the node failures are more frequent and performance can vary even in the same type of nodes(EC2 instances). This could be a result of non-virtualized resources like network bandwidth. When it happens, data need to be reshuffled between nodes which will impact the system performance.
+
+Snowflake solution: separates storage and compute. Storage in Amazon S3(blob store). Compute in snowflake shared-nothing engine.
+
+__How SF shored data in S3__
+
+❌ S3: No possible to append data the end of file instead of fully overwritten.
+
+💡 Snowflake: Tables are horizontally partitioned into immutable files.
+
+✅ S3: Support GET requests for parts of a file.
+
+💡 Snowflake: Within each file, the values of same column or attribute are grouped together and heavily compressed. Each table file has a header contain the offsets of each column within the file.
+
