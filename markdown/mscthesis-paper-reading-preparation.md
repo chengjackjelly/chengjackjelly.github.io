@@ -54,6 +54,8 @@ The lifecycle included:
 - Data visualization
 - Data transmission
 - Data application
+
+
 ### Topic: data warehouse
 #### 5. snowflake the original paper
 
