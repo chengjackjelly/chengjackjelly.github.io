@@ -87,3 +87,15 @@ __How SF shored data in S3__
 
 💡 Snowflake: Within each file, the values of same column or attribute are grouped together and heavily compressed. Each table file has a header contain the offsets of each column within the file.
 
+__Compute QUERY: Virtual Warehouse__
+
+- Isolation
+
+    Each query runs on one VW. VM of different size can have different number of worker nodes (a EC2 instance). Worker nodes not shared across VWs resulting in strong __performance isolation__ for queries.
+
+- Consistent hashing: improve caching with query optimizer
+
+    LRU used to manage cache replacement in each worker node. Optimizer assigns input file sets to worker nodes using consistent hashing over table file names.
+    The queries accessing to same table file will then be put to the same worker node.
+
+- Execution engine
