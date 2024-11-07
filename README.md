@@ -14,4 +14,4 @@ run ./run.sh
 - use github actions to furthur automate everything
 - only regenerate the html when the corresponding markdown is changed since last generation.
 - generating git commit message automatically from modified content(update/add/deleted...)
-- add timestamp to each plog and update them during git commit 
+- add timestamp/author to each plog and update them during git commit 
