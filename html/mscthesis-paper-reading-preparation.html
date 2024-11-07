@@ -296,7 +296,38 @@ queries.</p></li>
 assigns input file sets to worker nodes using consistent hashing over
 table file names. The queries accessing to same table file will then be
 put to the same worker node.</p></li>
-<li><p>Execution engine</p></li>
+<li><p>Execution engine</p>
+<p>TODO..</p></li>
+</ul>
+<h3 id="topic-data-steam-processing">Topic: data steam processing</h3>
+<h4 id="apache-flink-original-paper">6. apache-flink original paper</h4>
+<p>P.S. Below is my personal understanding based on the paper, could be
+inaccurate and would be adjust in the furture.</p>
+<h5 id="problems-to-sovle">Problems to sovle</h5>
+<ul>
+<li>Batch(static) data stream processing ignore the time features.</li>
+<li>“lambda architecture” combine batch and stream processing. The
+stream layer is responsible for the calculation of some time related
+features from data which changing in real-time and the batch layer is to
+calculate the statistic features from a period of time which don’t need
+to be real time. This archtecture suffers from the latency and
+complexity.
+<ul>
+<li>latency: when the application need both data, they have to pull them
+from these two different sources.</li>
+<li>complexity: if the data schema changes, both places of code need to
+be changed.</li>
+<li>exists tradeoff between data freshness and accuracy</li>
+</ul></li>
+</ul>
+<h5 id="main-contribution">Main contribution</h5>
+<ul>
+<li>a unified architecture for both stream and batch processing
+with:</li>
+<li>a windowing mechanism</li>
+<li>a batch processer</li>
+<li>that represent a streaming dataflow for streaming, batch, iterative,
+and interactive analytics.</li>
 </ul>
 </body>
 </html>
