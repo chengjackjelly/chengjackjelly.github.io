@@ -17,3 +17,4 @@ run ./run.sh
 - ~~only regenerate the html when the corresponding markdown is changed since last generation~~
 - ~~generating git commit message automatically from modified content(update/add/deleted...~~
 - ~~add timestamp/author to each plog and update them during git commit~~
+- ~~add recent update time to the index page and sorted the article by them~~
