@@ -106,13 +106,13 @@ __Compute QUERY: Virtual Warehouse__
 ### Topic: data steam processing
 #### 6. apache-flink original paper
 
-P.S. Below is my personal understanding based on the paper, could be inaccurate and would be adjust in the furture.
+P.S. Below is my personal understanding based on the paper, could be inaccurate and would be adjust in the future.
 
 
 ##### Problems to sovle
 
 - Batch(static) data stream processing ignore the time features.
-- "lambda architecture" combine batch and stream processing. The stream layer is responsible for the calculation of some time related features from data which changing in real-time and the batch layer is to calculate the statistic features from a period of time which don't need to be real time. This archtecture suffers from the latency and complexity.
+- "lambda architecture" combine batch and stream processing. The stream layer is responsible for the calculation of some time related features from data which changing in real-time and the batch layer is to calculate the statistic features from a period of time which don't need to be real time. This architecture suffers from the latency and complexity.
     - latency: when the application need both data, they have to pull them from these two different sources.
     - complexity: if the data schema changes, both places of code need to be changed.
     -  exists tradeoff between data freshness and accuracy
@@ -123,3 +123,35 @@ P.S. Below is my personal understanding based on the paper, could be inaccurate 
 - a windowing mechanism
 - a batch processer
 - that represent a streaming dataflow for streaming, batch, iterative, and interactive analytics.
+
+## Thesis Writing
+
+### literature search, __evaluation__ and proper citing 
+
+Publication types
+
+- Peer-reviewed publications
+
+    - papers in conference
+    - workshop proceedings
+
+- Non-reviewed publications
+
+    - technical reports
+    - white papers
+
+Reading the contributions, asking questions
+
+- What is new here?
+- What are the main results?
+- Are the results good?
+- Are the results relevant?
+
+
+Something i did not know before about citing:
+
+- we can not copy verbatim from a paper and cite it (paraphrasing instead).
+
+- if we really do need to do the thing above, we should use quotations( "the original content") instead.
+
+- always cite the original instead of the one that reference to the original content.
