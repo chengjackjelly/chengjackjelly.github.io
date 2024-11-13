@@ -1,3 +1,8 @@
+
+## Write in
+- Created: 2024-11-13 10:21:20
+- Updated: 2024-11-13 10:21:20
+
 ## Master thesis preparation 
 
 ### Topic: data quality
