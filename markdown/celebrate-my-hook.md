@@ -10,3 +10,5 @@ some part of this blog is updated by the scripts in post-commit hook!
 Auto commit should be generated as well
 
 Horraaayyyyyy
+
+update post commit hook
