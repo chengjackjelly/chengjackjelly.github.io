@@ -107,6 +107,16 @@ __Compute QUERY: Virtual Warehouse__
     TODO..
 
 
+#### 7. An Overview of Data Warehousing and OLAP Technology [link](https://dl.acm.org/doi/pdf/10.1145/248603.248616)
+
+These following parts might be relevant.
+
+- Data Warehousing architecture explain.
+- The Backend Tools, especially __Data Cleaning__ part.
+
+
+
+
 
 ### Topic: data steam processing
 #### 6. apache-flink original paper
