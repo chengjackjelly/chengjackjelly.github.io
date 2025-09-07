@@ -87,11 +87,12 @@ added_files = sys.argv[2].split(',') if sys.argv[2] else []
 deleted_files = sys.argv[3].split(',') if sys.argv[3] else []
 
 markdown_files = []
-for file in modified_files:
-    markdown_files.append(Blog(Path(file),GitCommitEnum.MODIFIED))
 
 for file in added_files:
     markdown_files.append(Blog(Path(file),GitCommitEnum.ADD))
+
+for file in modified_files:
+    markdown_files.append(Blog(Path(file),GitCommitEnum.MODIFIED))
 
 for file in deleted_files:
     markdown_files.append(Blog(Path(file),GitCommitEnum.DELETED))
