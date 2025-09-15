@@ -1,8 +1,7 @@
 
 ## Write in
 - Created: 2025-09-07 18:13:52
-- Updated: 2025-09-07 18:13:53
-
+- Updated: 2025-09-15 13:06:15
 
 ### Some reflection while writing thesis
 
