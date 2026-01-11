@@ -1,28 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jiajun Chen Blog</title>
+    <title>Blog</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
-
 <body>
+    <header>
+        <h1><a href="#" onclick="showHome(); return false;">Blog</a></h1>
+        <nav id="categories"></nav>
+    </header>
 
-    <nav>
-        <ul>
-                <li><a href="html/vim.html">vim</a> &nbsp;&nbsp;&nbsp;&nbsp;(Last updated: Thu Nov  7 11:52:39 2024)</li>
-                <li><a href="html/cpp.html">cpp</a> &nbsp;&nbsp;&nbsp;&nbsp;(Last updated: Thu Nov  7 11:52:39 2024)</li>
-                <li><a href="html/tech_thought.html">tech_thought</a> &nbsp;&nbsp;&nbsp;&nbsp;(Last updated: Mon Sep 15 13:06:15 2025)</li>
-                <li><a href="html/random_thought.html">random_thought</a> &nbsp;&nbsp;&nbsp;&nbsp;(Last updated: Mon Sep  8 22:59:29 2025)</li>
-        </ul>
-    </nav>
-
-    <main id="content">
-   
+    <main>
+        <section id="post-list"></section>
+        <article id="post-content" style="display: none;"></article>
     </main>
 
-</body>
+    <script>
+        let posts = [];
+        let categories = new Set();
 
+        async function init() {
+            const res = await fetch('posts.json');
+            posts = await res.json();
+            posts.forEach(p => p.categories?.forEach(c => categories.add(c)));
+            renderCategories();
+            renderPostList(posts);
+        }
+
+        function renderCategories() {
+            const nav = document.getElementById('categories');
+            nav.innerHTML = '<a href="#" onclick="filterByCategory(null); return false;">All</a>';
+            categories.forEach(cat => {
+                nav.innerHTML += `<a href="#" onclick="filterByCategory('${cat}'); return false;">${cat}</a>`;
+            });
+        }
+
+        function renderPostList(list) {
+            document.getElementById('post-list').style.display = 'block';
+            document.getElementById('post-content').style.display = 'none';
+
+            const container = document.getElementById('post-list');
+            container.innerHTML = list.map(p => `
+                <div class="post-item" onclick="showPost('${p.file}')">
+                    <h2>${p.title}</h2>
+                    <div class="meta">
+                        <span class="date">${p.date}</span>
+                        ${p.categories ? `<span class="cats">${p.categories.join(', ')}</span>` : ''}
+                    </div>
+                    ${p.summary ? `<p>${p.summary}</p>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function filterByCategory(cat) {
+            const filtered = cat ? posts.filter(p => p.categories?.includes(cat)) : posts;
+            renderPostList(filtered);
+        }
+
+        async function showPost(file) {
+            try {
+                const res = await fetch(`posts/${file}`);
+                const md = await res.text();
+                const html = typeof marked.parse === 'function' ? marked.parse(md) : marked(md);
+
+                document.getElementById('post-list').style.display = 'none';
+                document.getElementById('post-content').style.display = 'block';
+                document.getElementById('post-content').innerHTML = `
+                    <a href="#" onclick="showHome(); return false;" class="back">Back</a>
+                    <div class="markdown-body">${html}</div>
+                `;
+            } catch (err) {
+                console.error('Error loading post:', err);
+            }
+        }
+
+        function showHome() {
+            renderPostList(posts);
+        }
+
+        init();
+    </script>
+</body>
 </html>
